@@ -2,9 +2,9 @@
 <html lang="en-us">
   <head><link rel="icon" href="/favicon_main.svg"><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta http-equiv="x-ua-compatible" content="ie=edge" /><meta property="og:url"  content="https://f5se.io/projects/msda/" />
-    <meta property="og:type" content="article" /><meta property="og:title" content="MSDA" /><meta property="og:description" content="MSDA enable service discovery and registration for F5" /><meta property="og:image:width"  content="600" />
-        <meta property="og:image:height" content="316" /><meta property="og:image" content="https://f5se.io/projects/msda/bridge2modernapp_hu6042bd3358111a3e49f21cafc105120b_288143_600x0_resize_box_3.png" /><title>f5 se innovation center site - MSDA</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge" /><meta property="og:url"  content="https://f5se.io/projects/ttcp/" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="TTCP" /><meta property="og:description" content="TTCP(Test TCP) is an utility to measure TCP throughput through an IP path" /><meta property="og:image:width"  content="600" />
+        <meta property="og:image:height" content="260" /><meta property="og:image" content="https://f5se.io/projects/ttcp/ttcp-logo_hu07184911b6aaf07be64ca0c56632ffb0_8317_600x0_resize_box_3.png" /><title>f5 se innovation center site - TTCP</title>
 
     
 <link href="/fonts/googlefontapicss?family=Exo&#43;2" rel="stylesheet">
@@ -224,7 +224,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-centered-tablet-portrait">
-        <h1 class="title is-2 section-title">MSDA</h1>
+        <h1 class="title is-2 section-title">TTCP</h1>
         <h5 class="subtitle is-5 is-muted"></h5>
         <div class="divider"></div>
         
@@ -233,17 +233,92 @@
             
             
             
-            <h1 id="project-msda-microservice-discovery-agent-bridge-to-modern-app">Project MSDA (MicroService Discovery Agent), Bridge to Modern App.</h1>
-<p>A project to develop an agent(MSDA, MicroService Discovery Agent) for BIG-IP/NGINX to enable service discovery of distributed and Microservices applications.</p>
-<p>Develop iApps LX template and iControl LX API for BIG-IP</p>
-<p>Develop agent or module for NGINX</p>
-<p>Develop Containerized agent for BIG-IP next</p>
-<h1 id="github-repo">Github Repo</h1>
-<p><a href="https://github.com/orgs/ChinaModernAppGroup/teams/bridge2modernapp/repositories" target="_blank">github repo, bridge2modernapp</a></p>
-<h1 id="a-quick-demo">A quick demo</h1>
-<p><a href="https://github.com/ChinaModernAppGroup/MSDA-Demo" target="_blank">Demo repo, bridge2modernapp</a></p>
-<p><img src="./bridge2modernapp.png" alt="bridge2modernapp"></p>
-
+            <h1 id="about-ttcp">About TTCP</h1>
+<p>TTCP(Test TCP) contains a series of tools used for testing TCP/UDP based connectivity and performance.</p>
+<ul>
+<li><em>TTCP</em> is an utility to measure TCP throughput through an IP path, test tcp connection, transfers fabricated buffers or data copied from stdin. TTCP has long history, original created in 18 Dec 84 under 4.2BSD, later improved or modified by several professor/students/engineers/architects, what in this branch there has 3 key improvements: 1. add more options and a conf file <code>/etc/ttcp.conf</code> to adjust TCP profile in a fine-grained way; 2. recv side multiple processes ability, which the server side support multi-threads, not exit once a transaction finished; 3. cloud-native support, both recv and trans can run on K8S and Docker</li>
+<li><em>BANCS</em> is a tool used to simplify BIG-IP MRF Generic Message Routing tesing, which with bancs tool, you can set up a BIG-IP MRF tesing environment in 5 – 10 minutes in your own laptop, with several VM instances and VE started.</li>
+</ul>
+<p>Github repo: <a href="https://github.com/kylinsoong/ttcp" target="_blank">https://github.com/kylinsoong/ttcp</a></p>
+<h1 id="ttcp">TTCP</h1>
+<p>TTCP(Test TCP) is an utility to measure TCP throughput through an IP path, test tcp connection, transfers fabricated buffers or data copied from stdin.</p>
+<p>To use TTCP, start the receiver on one side of the path, then start the transmitter on the other side. The transmitting side sends a specified number of TCP packets to the receiving side. At the end of the test, the two sides display the number of bytes transmitted and the time elapsed for the packets to pass from one end to the other.</p>
+<h2 id="how-to-run-ttcp">How to Run TTCP</h2>
+<p>Install and run on traditional environment:</p>
+<pre tabindex="0"><code>rpm -ivh ttcp-1.13-2.x86_64.rpm
+ttcp -t [-options] host [ &lt; in ]
+ttcp -r [-options] [multicast-group][ &gt; out]
+</code></pre><p>Install and run on K8S:</p>
+<pre tabindex="0"><code>kubectl apply -f ttcp.yaml
+</code></pre><h2 id="ttcp-usage-case-in-cloud-native-environment">TTCP Usage Case in Cloud Native Environment</h2>
+<p>TTCP for K8S performance benchmark results:</p>
+<p><img src="./k8s-native-net-performance.png" alt="k8s-native-net-performance"></p>
+<ul>
+<li>Pods on same hosts have more than <em>1.6 times</em> TPS of pods across hosts in East-West traffic transmit.</li>
+<li>Pods on same hosts can approach <em>half of NIC</em> throughput in East-West traffic transmit.</li>
+<li>Pods on same hosts are <em>faster than</em> host to host East-West traffic transmit.</li>
+<li><em>Hostnetwork</em> are the <em>fastest</em> way for North-South traffic transmit.</li>
+<li><em>Hostnetwork</em> has the same performance as host to host, can approach <em>half of NIC</em> in North-South traffic transmit.</li>
+<li><em>NodePort node local</em> mode have around <em>1.6 times</em> TPS of <em>NodePort node on cluster</em> mode North-South traffic transmit.</li>
+<li><em>HostPort</em> has same performance as <em>NodePort node local</em> in North-South traffic transmit.</li>
+<li><em>NodePort node on cluster</em> North-South has worst performance, than <em>ClusterIP pod across hosts</em> East-West.</li>
+</ul>
+<h1 id="bancs">BANCS</h1>
+<h2 id="why-bancs">Why BANCS</h2>
+<p>Primary purpose of bancs tool is to simplify BIG-IP MRF tesing, which with bancs tool, you can set up a BIG-IP MRF tesing environment in 5 – 10 minutes in your own laptop, with several VM instances and VE started.</p>
+<h2 id="whats-bancs-tool">What’s BANCS tool</h2>
+<p>The bancs tool is a simple tool for simulating Core Bank Systems, can run on common x86 systems, bancs tool has 4 modules:</p>
+<ul>
+<li>BANCS – Core system, which receive inbound message from ESB, and send and receive message with CARD.</li>
+<li>CARD – Card sysytem, which wait inbound message from BANCS, and send response message to BANCS</li>
+<li>ESB – ESB layer, send single or bunch of message to BANCS</li>
+<li>TOOL – A tools, can generate ISO8583 compatible message</li>
+</ul>
+<p><img src="./bancs-arch.png" alt="bancs-arch"></p>
+<p>As the figure depicted above, a more detailed introduction as below:</p>
+<ol>
+<li>BANCS listen on 9805, 8805, CARD listen on 8806, BANCS connect to CARD via 8806(mark as connection 1), CARD connect to BANCS via 8805(mark as connection 2)</li>
+<li>A client simulate ESB send the request message to BANCS via 9805 which listened by BANCS</li>
+<li>BANCS forward request message to CARD</li>
+<li>CARD send response message to BANCS</li>
+</ol>
+<h2 id="how-to-install-bancs-tool">How to Install BANCS tool</h2>
+<p>To install bancs tool, first you need download a latest version from</p>
+<p><a href="https://github.com/kylinsoong/ttcp/releases" target="_blank">https://github.com/kylinsoong/ttcp/releases</a></p>
+<p>for example, you have downloaded the ttcp-1.13-2.x86_64.rpm from above link,  then you need prepare several x86 linux instances, on each instance install the rpm you just downloaded.</p>
+<pre tabindex="0"><code>rpm -ivh ttcp-1.13-2.x86_64.rpm
+</code></pre><p>After installation the commands hints can help to run, eg:</p>
+<pre tabindex="0"><code>~]# bancs 
+Usage: bancs -e [-options] &lt;host of BANCS&gt; 
+       bancs -b [-options] &lt;host of CARD&gt;
+       bancs -c [-options] &lt;host of BANCS&gt;
+       bancs -t [-options]
+Common options:
+        -d      enable debug logging
+        -l ##   the length of lay time of Init wait Listener (default 8 seconds, which means once Listener init finished and 8 * 10 seconds later, the Init start)
+        -p ##   port number to send to or listen at (default 8805/8806 9805)
+Common options for -t:
+        -m ##   specify the version of the ISO8583 standard, allowed value are 0-9
+        -n ##   total number of message to generated
+        -k ##   specify message kinds, different kinds means different length, 1 - 1562
+</code></pre><h2 id="how-to-use-bancs-tool">How to Use BANCS tool</h2>
+<p>Below figure is a simple demonstration of running bancs tool, you need prepare linux instances(like centos) to run BANCS and CARD, and has BIG-IP set up IN and FROM VS.</p>
+<p><img src="./bancs-steps.png" alt="bancs-steps"></p>
+<p>As above figure depicted, five steps is necessary to set up a environment that contains BIG-IP and bancs modules(BANCS, CARD, ESB), BIG-IP sit between BANCS and CARD, provide genric message routing.</p>
+<p><em>Step 1: BIG-IP Configuration</em></p>
+<p>Create the MRF generaric message related objects, like peer, route, router, etc; create traditional BIG-IP objects, like Virtual Server, Pool, Monitor.</p>
+<p><em>Step 2: Start BANCS</em></p>
+<p>Run bancs with -b option to start the BANCS</p>
+<pre tabindex="0"><code>bancs -b &lt;IP of TO CARD VS&gt;
+</code></pre><p><em>Step 3: Start CARD</em></p>
+<pre tabindex="0"><code>bancs -c &lt;IP of FROM CARD VS&gt;
+</code></pre><p><em>Step 4: Generate ISO 8583 Test Message</em></p>
+<p>Run bancs with -t and -n option to genrate test messages</p>
+<pre tabindex="0"><code>bancs -t -n &lt;the number of messages&gt; &gt; /etc/bancs.data
+</code></pre><p><em>Step 5: Start ESB to begain testing</em></p>
+<p>Run bancs with -e option to start the ESB</p>
+<pre tabindex="0"><code>bancs -e &lt;IP of one of BANCS&gt;
+</code></pre>
           
         </section>
       </div>
