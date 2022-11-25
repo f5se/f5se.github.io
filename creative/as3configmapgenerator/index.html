@@ -2,7 +2,9 @@
 <html lang="en-us">
   <head><link rel="icon" href="/favicon_main.svg"><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta http-equiv="x-ua-compatible" content="ie=edge" /><title>f5 se innovation center site - tools</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge" /><meta property="og:url"  content="https://f5se.io/creative/as3configmapgenerator/" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="F5 AS3 Template Generator" /><meta property="og:description" content="A Performance Benchmark tools for both Tradational envrionment and K8S Environment." /><meta property="og:image:width"  content="600" />
+        <meta property="og:image:height" content="108" /><meta property="og:image" content="https://f5se.io/creative/as3configmapgenerator/as3-generator_hu0f849eeffe2c2027d7d0c4342ede90b3_1093068_600x0_resize_box_3.png" /><title>f5 se innovation center site - F5 AS3 Template Generator</title>
 
     
 <link href="/fonts/googlefontapicss?family=Exo&#43;2" rel="stylesheet">
@@ -219,117 +221,96 @@
     </div>
   </nav>
 <section class="section is-medium">
-        <div class="container">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title is-2 section-title">F5 AS3 Template Generator</h1>
+        <h5 class="subtitle is-5 is-muted"></h5>
+        <div class="divider"></div>
+        
+        <section class="section content has-text-justified">
           
             
-              <h1 class="title section-title">tools</h1>
-              <h5 class="subtitle is-5 is-muted"></h5>
-              <div class="divider"></div>        
-              <div class="section is-small">
-                <div class="columns">
-                    <div class="column is-4"><div class="box">
-      <figure class="image is-3by2">
-        <a href="/creative/javarestsdk/">
-        
-           
-           
-          
-            <img src="/creative/javarestsdk/SDK-Logo_hucb1d25352c8a76f916d25f91477032c7_1313421_600x0_resize_q75_box.jpeg" style="width: auto; margin:auto" alt="">
-          
-        
-        </a>
-      </figure>
-      <h3 class="title is-5 refresh-summary-title">
-        F5 iControlRest Java SDK
-      </h3>
-      <p class="refresh-summary">A Java SDK for F5 iControlRest.</p> 
-      <div class="action has-text-right">
-        <a href="/creative/javarestsdk/" class="button is-primary">
-                Read more
-            </a>
-      </div>
-    </div>
-  </div>
-<div class="column is-4"><div class="box">
-      <figure class="image is-3by2">
-        <a href="/creative/batchconftools/">
-        
-           
-           
-          
-            <img src="/creative/batchconftools/batchconfigf5_hue324f58a0ce53477b93b4f0c40d13328_36728_600x0_resize_q75_box.jpg" style="height: auto; margin:auto" alt="">
-          
-        
-        </a>
-      </figure>
-      <h3 class="title is-5 refresh-summary-title">
-        A F5 LTM bulk configurations tool
-      </h3>
-      <p class="refresh-summary">A cool bash config tool for ltm</p> 
-      <div class="action has-text-right">
-        <a href="/creative/batchconftools/" class="button is-primary">
-                Read more
-            </a>
-      </div>
-    </div>
-  </div>
-<div class="column is-4"><div class="box">
-      <figure class="image is-3by2">
-        <a href="/creative/f5apitest/">
-        
-           
-           
-          
-            <img src="/creative/f5apitest/f5apitest_hue324f58a0ce53477b93b4f0c40d13328_71293_600x0_resize_q75_box.jpg" style="width: auto; margin:auto" alt="">
-          
-        
-        </a>
-      </figure>
-      <h3 class="title is-5 refresh-summary-title">
-        A tool for F5 iControlRest stress testing
-      </h3>
-      <p class="refresh-summary">Quickly simulate API request to F5 control plane</p> 
-      <div class="action has-text-right">
-        <a href="/creative/f5apitest/" class="button is-primary">
-                Read more
-            </a>
-      </div>
-    </div>
-  </div>
-
-                          </div>
-                          <div class="columns">
-                            <div class="column is-4"><div class="box">
-      <figure class="image is-3by2">
-        <a href="/projects/nginx-icmt/">
-        
-           
-           
-          
-            <img src="/projects/nginx-icmt/nginx-icmt_huec83ea331d3ae6b20426b269018aa7ea_41725_600x0_resize_box_3.png" style="width: auto; margin:auto" alt="">
-          
-        
-        </a>
-      </figure>
-      <h3 class="title is-5 refresh-summary-title">
-        NGINX Ingress Controller Migration Tool
-      </h3>
-      <p class="refresh-summary">The NGINX Ingress Controller Migration Tool use for migration of the Kubernetes ingress-nginx configurations YAML to Nginx Ingress Controller.</p> 
-      <div class="action has-text-right">
-        <a href="/projects/nginx-icmt/" class="button is-primary">
-                Read more
-            </a>
-      </div>
-    </div>
-  </div>
-
-                  </div>
-                
-              </div>
             
+            
+            <h1 id="f5-as3-template-generator">F5 AS3 Template Generator</h1>
+<p>F5 AS3 Template Generator provide toolsets that generate configmap yaml, which used by automation ecosystem, like F5 CIS.</p>
+<p>F5 AS3 Template Generator is written by Java, to use this tool you need Java/Maven installed in your computer and build from source code.</p>
+<pre tabindex="0"><code>cd as3-perf-benchmark/ &amp;&amp; mvn clean install
+</code></pre><p>Once build success, a runnable fat jar <code>as3-perf-benchmark.jar</code> will come out, Run the fat jar with a configuration file <code>config.json</code>:</p>
+<pre tabindex="0"><code>java -jar as3-perf-benchmark.jar config.json
+</code></pre><p>which the <code>config.json</code> controls how the AS3 Template be geneated.</p>
+<p>Below is a sample of a configuration file：</p>
+<pre tabindex="0"><code>{
+  &#34;subnet&#34;: &#34;197.20.222.0/24&#34;,
+  &#34;memberSubnet&#34;: &#34;10.10.20.0/24&#34;,
+  &#34;mode&#34;: &#34;CIS_291_AS_336_HUB&#34;,
+  &#34;as3Version&#34;: &#34;3.36.0&#34;,
+  &#34;appCount&#34;: 5,
+  &#34;appPerNamespace&#34;: 2,
+  &#34;appImage&#34;: &#34;artifactory.dev.example.cn:31345/net-docker-ver-local/bigip-ctlr/f5-demo-app:0221&#34;,
+  &#34;appImageContainerPort&#34;: 80,
+  &#34;namespacePrefix&#34;: &#34;bigip-ctlr-ns-&#34;,
+  &#34;isNSPrecreated&#34;: true,
+  &#34;deployFile&#34;: &#34;deploy.yaml&#34;,
+  &#34;configmapFile&#34;: &#34;cm.yaml&#34;
+}
+</code></pre><ul>
+<li>subnet - the VS IP address range, which used by AS3 Service_HTTP, Service_L4, Service_TCP</li>
+<li>memberSubnet - The IP range used by AS3 Pool, note that if you geneate the Template for K8S CIS, this option is not needed, due the CIS will auto dicover the member addreee</li>
+<li>mode - used to specify the mode used to generate AS3 Template, Support value are: <code>AS_318</code>, <code>CIS_280_AS_330_HUB</code>, <code>CIS_281_AS_330_HUB</code>, <code>CIS_20_AS_318_HUB</code>, <code>CIS_21_NAMESPACE_LABEL</code>, `CIS_291_AS_336_HUB</li>
+<li>as3Version - specify AS Version, current support: <code>3.18.0</code>, <code>3.19.0</code>, <code>3.20.0</code>, <code>3.21.0</code>, <code>3.22.0</code>, <code>3.23.0</code>, <code>3.24.0</code>, <code>3.25.0</code>, <code>3.30.0</code>, <code>3.36.0</code></li>
+<li>appCount - the number of total application</li>
+<li>appPerNamespace - the number of application per K8S namespace, only used in Cloud Native CIS</li>
+<li>appImage - the application docker iamge, only used in Cloud Native CIS</li>
+</ul>
+<p>For more information refer to <a href="https://github.com/cloudadc/as3-configmap-generator" target="_blank">https://github.com/cloudadc/as3-configmap-generator</a></p>
+<h2 id="usage-case-cis-auto-ops">Usage Case: CIS Auto Ops</h2>
+<p>Once the the Generator the Template, use K8S API can load the configmap style Template to K8S, then trigger CIS service post, which this can be used in CIS Auto Ops, <a href="https://github.com/cloudadc/as3-configmap-generator/blob/master/kubernetes-loader" target="_blank">https://github.com/cloudadc/as3-configmap-generator/blob/master/kubernetes-loader</a> is a sample for this, which use K8S API via K8S Java SDK</p>
+<pre tabindex="0"><code>        &lt;dependency&gt;
+            &lt;groupId&gt;io.kubernetes&lt;/groupId&gt;
+            &lt;artifactId&gt;client-java&lt;/artifactId&gt;
+            &lt;version&gt;${io.kubernetes.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.kubernetes&lt;/groupId&gt;
+            &lt;artifactId&gt;client-java-extended&lt;/artifactId&gt;
+            &lt;version&gt;${io.kubernetes.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre><h2 id="usage-case-cis-control-plane-performance-benchmark">Usage Case: CIS Control Plane Performance Benchmark</h2>
+<p>With AS3 Template Generator can generate K8S Deployment, and AS3 Configmap, eg, genetate 150 application, 10 application per namespace, then use the following commands can count the time spend for add 150 services, the time of delete/add one service, the time of POD scale.</p>
+<pre tabindex="0"><code>kubectl apply -f configmap-filter-tenants/deploy-150-svc.yaml
+kubectl apply -f configmap-filter-tenants/cm-150-svc.yaml
+
+// add 151th app and 151th vs and record time spended
+kubectl apply -f configmap-filter-tenants/deploy-151-svc.yaml
+kubectl apply -f configmap-filter-tenants/cm-151-svc.yaml
+
+// upadate service, then record time
+kubectl scale -n cistest149 deploy/app-3 --replicas=2
+
+// delete service from BIG-IP, record time
+kubectl apply -f configmap-filter-tenants/cm-150-svc.yaml
+
+// resource release
+kubectl scale -n cistest149 deploy/app-3 --replicas=1
+</code></pre><p>The Bash scripts can used to count the time:</p>
+<pre tabindex="0"><code>STARTTIME=$(date +%s) ; for i in {1..100} ; do tmsh list ltm pool /perftest151/perftest151/* | grep address | wc -l ; ENDTIME=$(date +%s); echo &#34;spend $(($ENDTIME - $STARTTIME)) seconds&#34; ; sleep 3 ; done
+</code></pre><p>The folloing is a results for use AS3 Template Generator to compare the control plane performance of CIS and CIS-C.</p>
+<p><img src="./cis-c-perf.png" alt="cis-c-perf"></p>
+<p>As above figures, the CIS-C has around 90% performance improvement.</p>
+<ul>
+<li>More about CIS-C refer to <a href="https://xc.f5se.io/projects/cis-c/" target="_blank">https://xc.f5se.io/projects/cis-c/</a></li>
+<li>More about complete steps of Performance Comparision refer to <a href="https://github.com/cloudadc/cis-scripts/blob/cis-hub/PERFORMANCE.adoc" target="_blank">https://github.com/cloudadc/cis-scripts/blob/cis-hub/PERFORMANCE.adoc</a></li>
+</ul>
+
           
-        </div>
-    </section><footer class="footer footer-dark">
+        </section>
+      </div>
+    </div>
+  </div>  
+  </section>
+<footer class="footer footer-dark">
   <div class="container">
     <div class="columns">
       <div class="column">
