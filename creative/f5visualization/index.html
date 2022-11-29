@@ -2,7 +2,9 @@
 <html lang="en-us">
   <head><link rel="icon" href="/favicon_main.svg"><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta http-equiv="x-ua-compatible" content="ie=edge" /><title>f5 se innovation center site - AS3</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge" /><meta property="og:url"  content="https://f5se.io/creative/f5visualization/" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="Visualize your F5 and Apps" /><meta property="og:description" content="Quickly simulate API request to F5 control plane" /><meta property="og:image:width"  content="600" />
+        <meta property="og:image:height" content="395" /><meta property="og:image" content="https://f5se.io/creative/f5visualization/f5visual_hue324f58a0ce53477b93b4f0c40d13328_71293_600x0_resize_q75_box.jpg" /><title>f5 se innovation center site - Visualize your F5 and Apps</title>
 
     
 <link href="/fonts/googlefontapicss?family=Exo&#43;2" rel="stylesheet">
@@ -219,45 +221,87 @@
     </div>
   </nav>
 <section class="section is-medium">
-        <div class="container">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title is-2 section-title">Visualize your F5 and Apps</h1>
+        <h5 class="subtitle is-5 is-muted"></h5>
+        <div class="divider"></div>
+        
+        <section class="section content has-text-justified">
           
             
-              <h1 class="title section-title">AS3</h1>
-              <h5 class="subtitle is-5 is-muted"></h5>
-              <div class="divider"></div>        
-              <div class="section is-small">
-                <div class="columns">
-                    <div class="column is-4"><div class="box">
-      <figure class="image is-3by2">
-        <a href="/creative/as3configmapgenerator/">
-        
-           
-           
+            
+            
+            <p>This is a brand new visualization powered by <strong>Hu</strong> Yipeng (胡易鹏) .</p>
+<p>By combining Prometheus+Elasticsearch+Grafana to build a large screen for displaying F5 device status and business operation status.</p>
+<ul>
+<li>Prometheus combined with snmp-exporter is used to monitor the running status of equipment</li>
+<li>Elasticsearch combined with F5 HSL to display business operation status</li>
+<li>Grafana is used for large-screen view display</li>
+</ul>
+<p>In word under this directory, you can see complete and detailed installation and configuration steps. related display</p>
+<table>
+<thead>
+<tr>
+<th><strong>Dashboard template name</strong></th>
+<th><strong>Grafana data source</strong></th>
+<th><strong>Function</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F5 equipment status monitoring</td>
+<td>Prometheus</td>
+<td>Monitor F5 device hardware status</td>
+</tr>
+<tr>
+<td>Container&amp;Node performance monitoring</td>
+<td>Prometheus</td>
+<td>Monitor the host hardware status</td>
+</tr>
+<tr>
+<td>HTTP business view display</td>
+<td>Elasticsearch-http</td>
+<td>Show F5 HTTP business status</td>
+</tr>
+<tr>
+<td>Display of DNS resolution view</td>
+<td>Elasticsearch-dns</td>
+<td>Demonstrate F5 DNS service status</td>
+</tr>
+<tr>
+<td>TCP-L4 delay view display</td>
+<td>Elasticsearch-tcp</td>
+<td>Demonstrate the status of F5 L4 business chain building</td>
+</tr>
+<tr>
+<td>Security protection situation view display</td>
+<td>Elasticsearch-asm</td>
+<td>Show F5 Awaf security protection posture</td>
+</tr>
+</tbody>
+</table>
+<p>Visual display effect of DNS resolution:</p>
+<p><a href="https://github.com/myf5/f5-elk-demo/blob/master/NEW-Prometheus-elasticsearch-grafana/img/image-20221129164756426.png"><img src="img/image-20221129164756426.png" alt="image-20221129164756426" target="_blank"></a></p>
+<p>HTTP access visualization effect:</p>
+<p><a href="https://github.com/myf5/f5-elk-demo/blob/master/NEW-Prometheus-elasticsearch-grafana/img/image-20221129164811794.png"><img src="img/image-20221129164811794.png" alt="image-20221129164811794" target="_blank"></a></p>
+<p>TCP connection delay display effect:</p>
+<p><a href="https://github.com/myf5/f5-elk-demo/blob/master/NEW-Prometheus-elasticsearch-grafana/img/image-20221129164821310.png"><img src="img/image-20221129164821310.png" alt="image-20221129164821310" target="_blank"></a></p>
+<p>Display effect of security protection situation:</p>
+<p><a href="https://github.com/myf5/f5-elk-demo/blob/master/NEW-Prometheus-elasticsearch-grafana/img/image-20221129164843441.png"><img src="img/image-20221129164843441.png" alt="image-20221129164843441" target="_blank"></a></p>
+<p>Host indicator monitoring display effect:</p>
+<p><a href="https://github.com/myf5/f5-elk-demo/blob/master/NEW-Prometheus-elasticsearch-grafana/img/image-20221129164904264.png"><img src="img/image-20221129164904264.png" alt="image-20221129164904264" target="_blank"></a></p>
+<p>Display effect of container monitoring indicators:</p>
+<p><a href="https://github.com/myf5/f5-elk-demo/blob/master/NEW-Prometheus-elasticsearch-grafana/img/image-20221129165023587.png"><img src="img/image-20221129165023587.png" alt="image-20221129165023587" target="_blank"></a></p>
+
           
-            <img src="/creative/as3configmapgenerator/as3-generator_hu0f849eeffe2c2027d7d0c4342ede90b3_1093068_600x0_resize_box_3.png" style="height: auto; margin:auto" alt="">
-          
-        
-        </a>
-      </figure>
-      <h3 class="title is-5 refresh-summary-title">
-        F5 AS3 Template Generator
-      </h3>
-      <p class="refresh-summary">A Performance Benchmark tools for both Tradational envrionment and K8S Environment.</p> 
-      <div class="action has-text-right">
-        <a href="/creative/as3configmapgenerator/" class="button is-primary">
-                Read more
-            </a>
+        </section>
       </div>
     </div>
-  </div>
-
-                  </div>
-                
-              </div>
-            
-          
-        </div>
-    </section><footer class="footer footer-dark">
+  </div>  
+  </section>
+<footer class="footer footer-dark">
   <div class="container">
     <div class="columns">
       <div class="column">
