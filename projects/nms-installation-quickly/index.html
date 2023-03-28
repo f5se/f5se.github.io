@@ -2,7 +2,9 @@
 <html lang="en-us">
   <head><link rel="icon" href="/favicon_main.svg"><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta http-equiv="x-ua-compatible" content="ie=edge" /><title>f5 se innovation center site - microservices</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge" /><meta property="og:url"  content="https://xc.f5se.io/projects/nms-installation-quickly/" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="Automatic your NGINX NMS deployment " /><meta property="og:description" content="This is a handy tool that help you install NGINX NMS quickly." /><meta property="og:image:width"  content="600" />
+        <meta property="og:image:height" content="224" /><meta property="og:image" content="https://xc.f5se.io/projects/nms-installation-quickly/nms-logo_huc82d7b839fc53b7a5c86bd3cdfedcac6_40104_600x0_resize_box_3.png" /><title>f5 se innovation center site - Automatic your NGINX NMS deployment </title>
 
     
 <link href="/fonts/googlefontapicss?family=Exo&#43;2" rel="stylesheet">
@@ -219,45 +221,167 @@
     </div>
   </nav>
 <section class="section is-medium">
-        <div class="container">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title is-2 section-title">Automatic your NGINX NMS deployment </h1>
+        <h5 class="subtitle is-5 is-muted"></h5>
+        <div class="divider"></div>
+        
+        <section class="section content has-text-justified">
           
             
-              <h1 class="title section-title">microservices</h1>
-              <h5 class="subtitle is-5 is-muted"></h5>
-              <div class="divider"></div>        
-              <div class="section is-small">
-                <div class="columns">
-                    <div class="column is-4"><div class="box">
-      <figure class="image is-3by2">
-        <a href="/projects/msda/">
-        
-           
-           
+            
+            
+            <h1 id="source-code-repo">Source Code repo</h1>
+<p><a href="https://github.com/lefeck/nms-automatic-deployment/" target="_blank">https://github.com/lefeck/nms-automatic-deployment/</a></p>
+<p>Supported by Wang Jin Huai.</p>
+<h1 id="nms-automatic-deployment">nms-automatic-deployment</h1>
+<p>This is an NGINX Management Suite offline installation and deployment tool that gets applications up and running quickly, efficiently, and reliably, solving problems such as the difficult of installing and deploying our services offline.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The script is only running  on CentOS 7 System</p>
+<h2 id="usage">Usage</h2>
+<p>This is a basic usage, you can learn more about it.</p>
+<p>First, you need to download the installation package to the specified directory, as follows:</p>
+<ul>
+<li>Clickhouse package: You can download it to the corresponding directory by using the command <code>./nms-automatic-deployment.sh clickhouse download</code> to the corresponding directory</li>
+<li>nginx package: You can download the package by using the command<code>./nms-automatic-deployment.sh nginx download</code>to the corresponding directory.</li>
+<li>nim and acm packages: NGINX Management Suite is a trial version or a paid subscription application, you need to download the required installation package to the corresponding directory. <a href="https://account.f5.com/myf5" target="_blank">Sign up for NGINX Management Suite at MyF5</a>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># This is the entire file directory hierarchy, if you want to use this script, you need to download the installation package to the corresponding directory </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># in advance, you can run the script to perform installation and deployment operations</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost nms-automatic-deployment<span style="color:#f92672">]</span><span style="color:#75715e"># tree </span>
+</span></span><span style="display:flex;"><span>├── LICENSE
+</span></span><span style="display:flex;"><span>├── nms-automatic-deployment.sh
+</span></span><span style="display:flex;"><span>├── pkgs
+</span></span><span style="display:flex;"><span>│      ├── acm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-devportal-1.4.1.762997390.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-devportal-ui-1.4.1.762997429.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nms-api-connectivity-manager-1.4.1.762997411.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        └── nms-instance-manager-2.7.0-727255265.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      ├── cert
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-repo.crt
+</span></span><span style="display:flex;"><span>│      │        └── nginx-repo.key
+</span></span><span style="display:flex;"><span>│      ├── clickhouse-server
+</span></span><span style="display:flex;"><span>│      │        ├── clickhouse-client-22.2.2.1-2.noarch.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── clickhouse-common-static-22.2.2.1-2.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        └── clickhouse-server-22.2.2.1-2.noarch.rpm
+</span></span><span style="display:flex;"><span>│      ├── nginx
+</span></span><span style="display:flex;"><span>│      │        └── nginx-1.21.4-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      ├── nginxplus
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-ha-keepalived-2.2.7-4.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-ha-keepalived-selinux-2.2.7-4.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-28-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-auth-spnego-28-1.1.0-2.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-brotli-28-1.0.0-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-encrypted-session-28-0.09-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-fips-check-28-0.1-2.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-geoip2-28-3.4-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-geoip-28-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-headers-more-28-0.34-2.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-image-filter-28-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-lua-28-0.10.22-2.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-ndk-28-0.3.2-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-njs-28-0.7.9-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-opentracing-28-0.27.0-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-passenger-28-6.0.15-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-perl-28-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-prometheus-28-1.3.4-1.el7.ngx.noarch.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-rtmp-28-1.2.2-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-set-misc-28-0.33-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-subs-filter-28-0.6.4-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │        ├── nginx-plus-module-xslt-28-1.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>│      │		└── nginx-sync-1.1-1.el7.ngx.noarch.rpm
+</span></span><span style="display:flex;"><span>│      └── nim
+</span></span><span style="display:flex;"><span>│           └── nms-instance-manager-2.7.0-727255265.el7.ngx.x86_64.rpm
+</span></span><span style="display:flex;"><span>└── README.md
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost nms-automatic-deployment<span style="color:#f92672">]</span><span style="color:#75715e"># ./nms-automatic-deployment.sh -h</span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh help | -h | --help
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh clickhouse <span style="color:#f92672">(</span>start|stop|restart|status|install|uninstall|download<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh nginx <span style="color:#f92672">(</span>start|stop|restart|status|install|uninstall|download<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh nginxplus <span style="color:#f92672">(</span>start|stop|restart|status|install|uninstall<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh nim <span style="color:#f92672">(</span>start|stop|restart|status|install|uninstall<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh acm <span style="color:#f92672">(</span>start|stop|restart|status|install|uninstall<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Options:
+</span></span><span style="display:flex;"><span>  help            Show this screen.
+</span></span><span style="display:flex;"><span>  clickhouse      Stop, start, or check the current status of clickhouse server.
+</span></span><span style="display:flex;"><span>  nginx           Stop, start, or check the current status of NGINX.
+</span></span><span style="display:flex;"><span>  nginxplus       Stop, start, or check the current status of NGINX Plus.
+</span></span><span style="display:flex;"><span>  nim             Stop, start, or check the current status of NGINX Instance Manager.
+</span></span><span style="display:flex;"><span>  acm             Stop, start, or check the current status of NGINX Management Suite API Connectivity Manager.
+</span></span><span style="display:flex;"><span>  version         Show the tools version
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost nms-automatic-deployment<span style="color:#f92672">]</span><span style="color:#75715e"># ./nms-automatic-deployment.sh acm -h</span>
+</span></span><span style="display:flex;"><span>Stop, start, or check current status of NGINX Management Suite API Connectivity Manager.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  nms-automatic-deployment.sh acm <span style="color:#f92672">(</span>start|stop|restart|status|install|uninstall<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Options:
+</span></span><span style="display:flex;"><span>  start     Start NGINX Management Suite API Connectivity Manager.
+</span></span><span style="display:flex;"><span>  stop      Stop NGINX Management Suite API Connectivity Manager.
+</span></span><span style="display:flex;"><span>  restart   Restart NGINX Management Suite API Connectivity Manager.
+</span></span><span style="display:flex;"><span>  status    Show status of NGINX Management Suite API Connectivity Manager.
+</span></span><span style="display:flex;"><span>  install   deploy NGINX Management Suite API Connectivity Manager.
+</span></span><span style="display:flex;"><span>  uninstall uninstall NGINX Management Suite API Connectivity Manager.
+</span></span></code></pre></div><h2 id="install-acm">install acm</h2>
+<p>This is an example of deploying the acm service, as follows：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost nms-automatic-deployment<span style="color:#f92672">]</span><span style="color:#75715e"># ./nms-automatic-deployment.sh acm install     </span>
+</span></span><span style="display:flex;"><span> clickhouse-server is installing sucessed. 
+</span></span><span style="display:flex;"><span> clickhouse-server is running sucessed. 
+</span></span><span style="display:flex;"><span> clickhouse-server is already running sucessed. 
+</span></span><span style="display:flex;"><span> the directory /etc/nginx is not exist sucessed. 
+</span></span><span style="display:flex;"><span> cp nginx-repo.key nginx-repo.crt to /etc/ssl/nginx directory sucessed. 
+</span></span><span style="display:flex;"><span> nginx-plus is installing sucessed. 
+</span></span><span style="display:flex;"><span> nginx-plus is running sucessed. 
+</span></span><span style="display:flex;"><span> nms-instance-manager is installing sucessed. 
+</span></span><span style="display:flex;"><span> nms is already running sucessed. 
+</span></span><span style="display:flex;"><span> change default password <span style="color:#66d9ef">for</span> web ui login sucessed. 
+</span></span><span style="display:flex;"><span> nms-api-connectivity-manager is installing sucessed. 
+</span></span><span style="display:flex;"><span> nms is already running sucessed. 
+</span></span><span style="display:flex;"><span> nms-api-connectivity-manager is running sucessed. 
+</span></span><span style="display:flex;"><span> nginx-plus is restart sucessed. 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>********************Web Login Prompt********************************
+</span></span><span style="display:flex;"><span>    Login link: https://192.168.10.179/ui/
+</span></span><span style="display:flex;"><span>    Admin username: admin
+</span></span><span style="display:flex;"><span>    Admin password: admin
+</span></span><span style="display:flex;"><span>********************Web Login Prompt********************************
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">[</span>root@localhost nms-automatic-deployment<span style="color:#f92672">]</span><span style="color:#75715e"># ss -tunlp</span>
+</span></span><span style="display:flex;"><span>Netid  State      Recv-Q Send-Q                             Local Address:Port                                            Peer Address:Port              
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                   127.0.0.1:9009                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>428<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">128</span>                                    127.0.0.1:7890                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;nms-dpm&#34;</span>,pid<span style="color:#f92672">=</span>5995,fd<span style="color:#f92672">=</span>13<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">128</span>                                    127.0.0.1:7891                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;nms-core&#34;</span>,pid<span style="color:#f92672">=</span>6005,fd<span style="color:#f92672">=</span>13<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">128</span>                                    127.0.0.1:9300                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;nms-acm&#34;</span>,pid<span style="color:#f92672">=</span>6007,fd<span style="color:#f92672">=</span>12<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">128</span>                                            *:22                                                         *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;sshd&#34;</span>,pid<span style="color:#f92672">=</span>1413,fd<span style="color:#f92672">=</span>3<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">100</span>                                    127.0.0.1:25                                                         *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;master&#34;</span>,pid<span style="color:#f92672">=</span>1540,fd<span style="color:#f92672">=</span>13<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                   127.0.0.1:8123                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>426<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">16384</span>                                  127.0.0.1:4222                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;nms-ingestion&#34;</span>,pid<span style="color:#f92672">=</span>5911,fd<span style="color:#f92672">=</span>9<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                   127.0.0.1:9000                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>427<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">16384</span>                                  127.0.0.1:9100                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;nms-dpm&#34;</span>,pid<span style="color:#f92672">=</span>5995,fd<span style="color:#f92672">=</span>17<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                   127.0.0.1:9004                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>429<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                   127.0.0.1:9005                                                       *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>430<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">511</span>                                            *:80                                                         *:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;nginx&#34;</span>,pid<span style="color:#f92672">=</span>5379,fd<span style="color:#f92672">=</span>6<span style="color:#f92672">)</span>,<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nginx&#34;</span>,pid<span style="color:#f92672">=</span>5378,fd<span style="color:#f92672">=</span>6<span style="color:#f92672">)</span>,<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nginx&#34;</span>,pid<span style="color:#f92672">=</span>5377,fd<span style="color:#f92672">=</span>6<span style="color:#f92672">)</span>,<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nginx&#34;</span>,pid<span style="color:#f92672">=</span>5376,fd<span style="color:#f92672">=</span>6<span style="color:#f92672">)</span>,<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nginx&#34;</span>,pid<span style="color:#f92672">=</span>5375,fd<span style="color:#f92672">=</span>6<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                       <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:9009                                                    <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>101<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">128</span>                                         <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:22                                                      <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;sshd&#34;</span>,pid<span style="color:#f92672">=</span>1413,fd<span style="color:#f92672">=</span>4<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                       <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:8123                                                    <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>92<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                       <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:9000                                                    <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>99<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                       <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:9004                                                    <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>107<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>tcp    LISTEN     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">4096</span>                                       <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:9005                                                    <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:*                   users:<span style="color:#f92672">((</span><span style="color:#e6db74">&#34;clickhouse-serv&#34;</span>,pid<span style="color:#f92672">=</span>4963,fd<span style="color:#f92672">=</span>425<span style="color:#f92672">))</span>
+</span></span></code></pre></div><h2 id="thanks">Thanks</h2>
+<p>If you have any questions, you can send me an email, and I will do my best to solve it.</p>
+<h2 id="license">License</h2>
+<p>MIT license.</p>
+
           
-            <img src="/projects/msda/bridge2modernapp_hu6042bd3358111a3e49f21cafc105120b_288143_600x0_resize_box_3.png" style="height: auto; margin:auto" alt="">
-          
-        
-        </a>
-      </figure>
-      <h3 class="title is-5 refresh-summary-title">
-        MSDA
-      </h3>
-      <p class="refresh-summary">MSDA enable service discovery and registration for F5</p> 
-      <div class="action has-text-right">
-        <a href="/projects/msda/" class="button is-primary">
-                Read more
-            </a>
+        </section>
       </div>
     </div>
-  </div>
-
-                  </div>
-                
-              </div>
-            
-          
-        </div>
-    </section><footer class="footer footer-dark">
+  </div>  
+  </section>
+<footer class="footer footer-dark">
   <div class="container">
     <div class="columns">
       <div class="column">
